@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Snapdeal</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-red: #E40046;
+            --bg-top: #FEF0F2;
+            --text-dark: #212121;
+            --text-light: #757575;
+            --white: #ffffff;
+            --border-light: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #f2f2f2;
+            color: var(--text-dark);
+            padding-bottom: 60px; /* For bottom nav */
+            overflow-x: hidden;
+        }
+
+        /* TOP SECTION */
+        .top-section {
+            background-color: var(--bg-top);
+            padding: 12px 16px;
+            position: relative;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-icon {
+            color: var(--brand-red);
+            font-size: 20px;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #333;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 16px;
+            font-size: 20px;
+            color: #444;
+        }
+
+        /* SEARCH BAR */
+        .search-bar {
+            background: var(--white);
+            border: 1.5px solid #d34c67;
+            border-radius: 24px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 5px rgba(228, 0, 70, 0.15);
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            font-size: 15px;
+            color: var(--text-dark);
+            margin-left: 10px;
+        }
+
+        .search-icons {
+            display: flex;
+            gap: 16px;
+            color: #666;
+            font-size: 20px;
+            align-items: center;
+        }
+        
+        .mic-icon, .camera-icon {
+            cursor: pointer;
+        }
+
+        /* LOCATION PILL */
+        .location-pill {
+            background-color: #ffeaef;
+            border: 1px solid #ffccd5;
+            border-radius: 16px;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 16px;
+            cursor: pointer;
+        }
+        
+        .location-pill .fa-location-dot {
+            font-size: 14px;
+            color: #222;
+        }
+        
+        .location-pill strong {
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* CATEGORIES PILLS */
+        .categories-row {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding-bottom: 4px;
+        }
+        .categories-row::-webkit-scrollbar { display: none; }
+
+        .cat-pill {
+            background: var(--white);
+            border: 1px solid #dcdcdc;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 14px 4px 4px;
+            min-width: max-content;
+            font-size: 13px;
+            font-weight: 500;
+            color: #444;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+
+        .cat-pill img {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* PROMO STRIP */
+        .promo-strip {
+             display: flex;
+             background: linear-gradient(to right, #fcf4cf, #ffffff);
+             border-top: 1px solid var(--border-light);
+             border-bottom: 1px solid var(--border-light);
+        }
+        .promo-col {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.2;
+        }
+        .promo-col:first-child {
+            border-right: 1px solid var(--border-light);
+            background: #fffcf0;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .promo-col:last-child {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* MAIN BANNER */
+        .main-banner {
+            width: 100%;
+            position: relative;
+        }
+        .main-banner img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .carousel-dots {
+            text-align: center;
+            padding: 10px 0;
+            background: white;
+            border-bottom: 2px solid #edeced;
+        }
+        .carousel-dots span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #bdbdbd;
+            margin: 0 4px;
+        }
+        .carousel-dots span.active {
+            background: #000;
+        }
+
+        /* DEAL OF THE DAY */
+        .deal-banner {
+            background: #f17a47;
+            color: #1a1a1a;
+            text-align: center;
+            padding: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .deal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            padding: 8px;
+            background: #f17a47;
+        }
+
+        .deal-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .deal-card img {
+            width: 100%;
+            aspect-ratio: 1/1.3;
+            object-fit: cover;
+        }
+        
+        .deal-card-info {
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .deal-card-info .title {
+            font-size: 12px;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
+        }
+        .deal-card-info .desc {
+            font-size: 12px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* BOTTOM NAV */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--white);
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid var(--border-light);
+            z-index: 100;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #777;
+            cursor: pointer;
+            gap: 4px;
+            flex: 1;
+        }
+        
+        .nav-item i {
+            font-size: 22px;
+        }
+        
+        .nav-item.active {
+            color: #111;
+        }
+        
+        .rup-icon {
+            background: var(--brand-red);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        /* --- MODALS & BOTTOM SHEETS --- */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Voice Modal */
+        .voice-modal {
+            background: white;
+            width: 80%;
+            max-width: 320px;
+            margin: auto;
+            border-radius: 4px;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: popIn 0.3s ease-out;
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .voice-modal .google-logo {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 30px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .mic-btn-large {
+            width: 80px;
+            height: 80px;
+            background: #1a73e8;
+            border-radius: 50%;
+            color: white;
+            font-size: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 0 10px #e8f0fe;
+        }
+        
+        .voice-dots {
+            font-size: 30px;
+            line-height: 1;
+            color: #555;
+            margin-bottom: 40px;
+            letter-spacing: 5px;
+        }
+        
+        .voice-lang {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Bottom Sheet base */
+        .bottom-sheet {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.1, 0.8, 0.2, 1);
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .overlay.active .bottom-sheet {
+            transform: translateY(0);
+        }
+
+        /* Camera Sheet */
+        .camera-sheet-header {
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 700;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .camera-sheet-header i {
+            font-size: 20px;
+            color: #555;
+            cursor: pointer;
+        }
+        
+        .camera-options {
+            display: flex;
+            padding: 30px 20px;
+            gap: 40px;
+        }
+        
+        .cam-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            color: #444;
+        }
+        
+        .cam-icon-box {
+            width: 56px;
+            height: 56px;
+            background: #f7f9fd;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #0c1a30;
+        }
+
+        /* Location Sheet */
+        .loc-sheet-header {
+            padding: 24px 20px 16px;
+        }
+        .loc-sheet-header h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #000;
+        }
+        .loc-sheet-header p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .address-list {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 20px 20px;
+            gap: 16px;
+            scrollbar-width: none;
+        }
+        .address-list::-webkit-scrollbar { display: none; }
+        
+        .address-card {
+            min-width: 180px;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .address-card.active {
+            border: 2px solid #c8a165;
+            background: #fffdf9;
+            padding: 15px; /* Offset border width */
+        }
+        
+        .address-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: #000;
+            margin-bottom: 4px;
+        }
+        
+        .address-details {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .address-badge {
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        .loc-actions {
+            padding: 0 20px 20px;
+        }
+        
+        .loc-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 0;
+            color: #2b6c96;
+            font-size: 15px;
+            font-weight: 500;
+            border-top: 1px solid #f0f0f0;
+            cursor: pointer;
+        }
+        .loc-action-btn i {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP SECTION -->
+    <div class="top-section">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Snapdeal_Logo_new.png" alt="logo" style="height: 24px; filter: invert(24%) sepia(85%) saturate(7403%) hue-rotate(338deg) brightness(97%) contrast(106%);">
+            </div>
+            <div class="header-icons">
+                <i class="fas fa-shopping-cart"></i>
+                <i class="far fa-heart"></i>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <i class="fas fa-search" style="color: #444; font-size: 18px;"></i>
+            <input type="text" placeholder="Search for Product" readonly onclick="openModal('voiceModal')">
+            <div class="search-icons">
+                <i class="fas fa-microphone mic-icon" onclick="openModal('voiceModal')"></i>
+                <i class="fas fa-camera camera-icon" onclick="openModal('cameraModal')"></i>
+            </div>
+        </div>
+
+        <!-- Location Pill -->
+        <div class="location-pill" onclick="openModal('locationModal')">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-location-dot"></i>
+                <span>Delivering to <strong>Ahmedabad - 380009</strong></span>
+            </div>
+            <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+        </div>
+
+        <!-- Categories Pill Row -->
+        <div class="categories-row">
+            <div class="cat-pill">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=50&h=50&fit=crop" alt="All">
+                <span>All</span>
+            </div>
+            <div class="cat-pill">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=50&h=50&fit=crop" alt="Women">
+                <span>Women</span>
+            </div>
+            <div class="cat-pill">
+                <img src="https://images.unsplash.com/photo-1516826957135-700ede19c6e4?w=50&h=50&fit=crop" alt="Men">
+                <span>Men</span>
+            </div>
+            <div class="cat-pill">
+                <img src="https://images.unsplash.com/photo-1519238396255-a50d28701831?w=50&h=50&fit=crop" alt="Kids">
+                <span>Kids</span>
+            </div>
+            <div class="cat-pill">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=50&h=50&fit=crop" alt="Beauty">
+                <span>Beauty</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROMO STRIP -->
+    <div class="promo-strip">
+        <div class="promo-col">
+            <span style="font-size: 13px; font-weight: 500;">EXTRA</span>
+            <span>20% OFF*</span>
+        </div>
+        <div class="promo-col">
+            <span style="font-weight: 700;">Discount Auto Applied On</span><br>Your 1st Order
+        </div>
+    </div>
+
+    <!-- MAIN BANNER (Trendz) -->
+    <div class="main-banner">
+        <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Trendz">
+        
+        <!-- text overlay mimicking the original image -->
+        <div style="position: absolute; top: 25%; left: 8%; color: #000;">
+            <div style="font-size: 48px; font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold; line-height: 1; letter-spacing: -2px;">trendz</div>
+            <div style="font-size: 9px; font-weight: 800; letter-spacing: 1px; color: #5aa1aa; margin-top: 4px;">FRESH PICKS OF THE SEASON</div>
+            <div style="font-size: 26px; font-weight: 900; margin-top: 12px; letter-spacing: -0.5px;">50-80% Off</div>
+            <div style="background: #000; color: #fff; font-size: 11px; font-weight: 600; display: inline-block; padding: 6px 10px; margin-top: 8px;">Be the First to Shop</div>
+        </div>
+    </div>
+    
+    <div class="carousel-dots">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- DEAL OF THE DAY -->
+    <div class="deal-banner">
+        Deal of the day
+    </div>
+    
+    <div class="deal-grid">
+        <div class="deal-card">
+            <img src="https://images.unsplash.com/photo-1515347619362-e67417e3ce01?w=300&h=400&fit=crop" alt="Salwar Suits">
+            <div class="deal-card-info">
+                <div class="title">Salwar Suits</div>
+                <div class="desc">MIN. 50% OFF</div>
+            </div>
+        </div>
+        <div class="deal-card">
+            <img src="https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?w=300&h=400&fit=crop" alt="Boys Clothing">
+            <div class="deal-card-info">
+                <div class="title">Boys' Clothing</div>
+                <div class="desc">MIN. 60% OFF</div>
+            </div>
+        </div>
+        <div class="deal-card">
+            <img src="https://images.unsplash.com/photo-1584839845012-70b77ccaa3b2?w=300&h=400&fit=crop" alt="Kitchen">
+            <div class="deal-card-info">
+                <div class="title">Kitchen Utility</div>
+                <div class="desc">UNDER ₹299</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 100px; background: #f17a47;"></div>
+
+    <!-- BOTTOM NAV -->
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-th-large"></i>
+            <span>Category</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
+            <span>My Cart</span>
+        </div>
+        <div class="nav-item">
+            <div class="rup-icon"><i class="fas fa-rupee-sign" style="font-size: 14px;"></i></div>
+            <span style="color: #666;">Earn ₹50</span>
+        </div>
+        <div class="nav-item">
+            <i class="far fa-user"></i>
+            <span>My Profile</span>
+        </div>
+    </div>
+
+    <!-- OVERLAYS AND MODALS -->
+    
+    <!-- 1. Voice Search Modal -->
+    <div class="overlay" id="voiceModal" onclick="closeModal(event, 'voiceModal')">
+        <div class="voice-modal" onclick="event.stopPropagation()">
+            <div class="google-logo">Google</div>
+            <div class="mic-btn-large">
+                <i class="fas fa-microphone"></i>
+            </div>
+            <div class="voice-dots">. . .</div>
+            <div class="voice-lang">English (India)</div>
+        </div>
+    </div>
+    
+    <!-- 2. Camera Bottom Sheet -->
+    <div class="overlay" id="cameraModal" onclick="closeModal(event, 'cameraModal')">
+        <div class="bottom-sheet" onclick="event.stopPropagation()">
+            <div class="camera-sheet-header">
+                <span>SEARCH BY PHOTO</span>
+                <i class="fas fa-times" onclick="forceClose('cameraModal')"></i>
+            </div>
+            <div class="camera-options">
+                <div class="cam-option">
+                    <div class="cam-icon-box">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span>Gallery</span>
+                </div>
+                <div class="cam-option">
+                    <div class="cam-icon-box">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <span>Camera</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 3. Location Bottom Sheet -->
+    <div class="overlay" id="locationModal" onclick="closeModal(event, 'locationModal')">
+        <div class="bottom-sheet" onclick="event.stopPropagation()">
+            <div class="loc-sheet-header">
+                <h3>Choose your location</h3>
+                <p>Select a delivery location to see product availability and delivery options</p>
+            </div>
+            
+            <div class="address-list">
+                <div class="address-card active">
+                    <div class="address-name">Shefali Patel</div>
+                    <div class="address-details">Room no. 403, Tulsi Apart...<br>Judges bungalow road<br>AHMEDABAD 38...</div>
+                </div>
+                <div class="address-card">
+                    <div class="address-name">Shefali Patel</div>
+                    <div class="address-details">Abhilasha society<br>92 Amikunj, opp...<br>Vadodara 390...</div>
+                    <div class="address-badge">Default address</div>
+                </div>
+                <div class="address-card" style="display: flex; justify-content: center; align-items: center; color: #2b6c96;">
+                    Add an address or pick-up point
+                </div>
+            </div>
+            
+            <div class="loc-actions">
+                <div class="loc-action-btn">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Enter an Indian pincode</span>
+                </div>
+                <div class="loc-action-btn">
+                    <i class="fas fa-crosshairs"></i>
+                    <span>Use my current location</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            // If it's the mic, simulate scanning
+            if(id === 'voiceModal'){
+                setTimeout(() => forceClose('voiceModal'), 3000);
+            }
+        }
+        
+        function closeModal(event, id) {
+            if(event.target === document.getElementById(id)){
+                forceClose(id);
+            }
+        }
+        
+        function forceClose(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+    </script>
+</body>
+</html>
